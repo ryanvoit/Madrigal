@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.first-component {
+    @apply text-blue-600 bg-blue-500 w-[260px] h-[300px]
+}
