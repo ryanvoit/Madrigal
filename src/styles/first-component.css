@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+.first-component {
+    color: red;
+    font-size: 30;
+}
