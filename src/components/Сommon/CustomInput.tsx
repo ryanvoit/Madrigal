@@ -1,5 +1,6 @@
 import { FC, useState } from "react"
 import { ChangeEventHandler } from "react"
+import { forwardRef } from "react"
 
 export interface CustomInputProps {
     inputType: 'email' | 'password',
@@ -7,28 +8,47 @@ export interface CustomInputProps {
     id: string,
     required: boolean,
     labelValue: string,
-    onChange: (value:string) => void
+    name?: string,
+    onBlur?: ChangeEventHandler<HTMLInputElement>,
+    onChange?: ChangeEventHandler<HTMLInputElement>,
+    errorMessage?: string
 }
 
-export const CustomInput: FC<CustomInputProps> = ({ inputType, placeholder, id, required, labelValue, onChange }) => {
-    const [input, setInput] = useState('')
+export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
+    ({ inputType, placeholder, id, required, labelValue, name, onChange, onBlur,
+        errorMessage
+    }, ref) => {
+        const [input, setInput] = useState('')
 
-    const handleInput: ChangeEventHandler<HTMLInputElement> = (event) => {
-        setInput(event.target.value)
-        onChange(event.target.value)
-    } 
+        const handleInput: ChangeEventHandler<HTMLInputElement> = (event) => {
+            setInput(event.target.value)
+            onChange?.(event)
+        }
 
-    /*
-    const handleClear = () => {
-        setInput('')
+        /*
+        const handleClear = () => {
+            setInput('')
+        }
+            */
+
+        return (
+            <div className="custom-input">
+                <input className="custom-input__field"
+                    type={inputType}
+                    id={id}
+                    ref={ref}
+                    placeholder={placeholder}
+                    onChange={handleInput}
+                    value={input ?? ''}
+                    required={required}
+                    name={name}
+                    onBlur={onBlur}
+                />
+                <label className="custom-input__label" htmlFor={id}>{labelValue}</label>
+                {errorMessage && <span className="custom-input__error text-red-500">{errorMessage}</span>}
+            </div>
+        )
     }
-        */
+)
 
-     return (
-        <div className="custom-input">
-            <input className="custom-input__field" type={inputType} id={id} placeholder={placeholder} onChange={handleInput} value={input ?? ''} required={required} />
-            <label className="custom-input__label" htmlFor={id}>{labelValue}</label>
-        </div>
-    )
-}
-    
+CustomInput.displayName = 'CustomInput'

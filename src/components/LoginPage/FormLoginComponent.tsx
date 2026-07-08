@@ -2,33 +2,45 @@
 
 import { CustomInput } from "../Сommon/CustomInput";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Login, LoginScheme } from "@/api/types";
 import { useState } from "react";
 
 export default function FormLoginComponent() {
     const router = useRouter()
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [error, setError] = useState<string | null>(null)
 
-    const handleClick = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm<Login>({
+        resolver: zodResolver(LoginScheme)
+    })
+
+    const handleClick = (data: Login) => {
         if (
-            email === 'mymail@yandex.ru' && 
-            password === '1234567890'
+            data.email === 'mymail@yandex.ru' && 
+            data.password === '1234567890'
         ) {
+            setError(null)
             router.push('/welcomepage')
         } else {
-            window.alert('ВСЁ ЧЕРЕЗ ЖОПУ!!!')
+            setError('Данные неверные! Проверьте их ещё раз!')
         }
     }
 
     return (
-        <form className="login-page__form">
+        <form className="login-page__form" onSubmit={handleSubmit((data) => {handleClick(data)})}>
             <CustomInput
                 inputType="email"
                 placeholder="Email"
                 id='email'
                 required={true}
                 labelValue="Введите Ваш Email"
-                onChange={setEmail}
+                {...register("email")}
+                errorMessage={errors.email && errors.email.message}
             />
             <CustomInput
                 inputType="password"
@@ -36,9 +48,11 @@ export default function FormLoginComponent() {
                 id='password'
                 required={true}
                 labelValue="Введите Ваш Пароль"
-                onChange={setPassword}
+                {...register("password")}
+                errorMessage={errors.password && errors.password.message}
             />
-            <button className="login-page__btn" type="button" onClick={handleClick}>Submit</button>
+            <button className="login-page__btn" type="submit">Submit</button>
+            {error && <span className="text-red-500">{error}</span>}
         </form>
     )
 }
