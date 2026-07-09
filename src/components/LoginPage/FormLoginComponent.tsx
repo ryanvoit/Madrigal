@@ -32,7 +32,7 @@ export default function FormLoginComponent() {
     }
 
     return (
-        <form className="login-page__form" onSubmit={handleSubmit((data) => {handleClick(data)})}>
+        <form className="login-page__form" noValidate={true} onSubmit={handleSubmit((data) => {handleClick(data)})}>
             <CustomInput
                 inputType="email"
                 placeholder="Email"
@@ -52,7 +52,7 @@ export default function FormLoginComponent() {
                 errorMessage={errors.password && errors.password.message}
             />
             <button className="login-page__btn" type="submit">Submit</button>
-            {error && <span className="text-red-500">{error}</span>}
+            {error && <span className="login-page__error">{error}</span>}
         </form>
     )
 }

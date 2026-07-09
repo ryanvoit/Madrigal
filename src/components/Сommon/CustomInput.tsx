@@ -45,7 +45,7 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
                     onBlur={onBlur}
                 />
                 <label className="custom-input__label" htmlFor={id}>{labelValue}</label>
-                {errorMessage && <span className="custom-input__error text-red-500">{errorMessage}</span>}
+                {errorMessage && <span className="custom-input__error">{errorMessage}</span>}
             </div>
         )
     }

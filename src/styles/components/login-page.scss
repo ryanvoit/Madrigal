@@ -1,0 +1,19 @@
+.login-page {
+    @apply flex flex-col gap-[30px] pt-[30px];
+
+    &__title {
+        @apply font-bold my-0 mx-[auto]
+    }
+
+    &__form {
+        @apply flex flex-col gap-[15px] px-[350px]
+    }
+
+    &__btn {
+        @apply w-[200px] bg-amber-500
+    }
+
+    &__error {
+        @apply text-red-500
+    }
+}
