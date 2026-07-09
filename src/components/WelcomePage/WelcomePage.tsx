@@ -1,13 +1,20 @@
-'use client';
-
 import { SearchBar } from './SearchBar';
 import styles from '../../../src/styles/components/welcomePage.module.scss';
 
 export default function WelcomePage() {
     return (
-        <div className={styles.container}>
-            <div className={styles.contentWrapper}>
-                <p className={styles.text}>
+        <div 
+        // className='welcome-page'
+        className={styles.container}
+        >
+            <div 
+            // className='container'
+            className={styles.contentWrapper}
+            >
+                <p 
+                // className='welcome-page__content'
+                className={styles.text}
+                >
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dignissimos nobis
                     reiciendis unde natus! Laborum tempora quo eveniet, totam rerum optio sapiente pariatur
                     dolor dolorum repudiandae impedit sint, exercitationem nobis cum at minima magnam eligendi
