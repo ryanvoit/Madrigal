@@ -31,12 +31,15 @@ $color-biloba-flower-90: rgba(163, 147, 245, 0.9);
 
 // Typography
 
-$ff-play: 'Play', 'Arial', sans-serif;
+$ff-inter: 'Inter', 'Arial', sans-serif;
 
 // Viewport
 
-$vp-tablet: 1023px;
-$vp-mobile: 767px;
+$vp-mobile: 375px;
+$vp-sm: 576px;
+$vp-tablet: 768px;
+$vp-lg: 1024px;
+$vp-desktop: 1440px;
 
 // Transition
 $transition: ease-in 0.3s;
