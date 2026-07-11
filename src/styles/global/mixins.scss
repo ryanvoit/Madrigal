@@ -1,11 +1,37 @@
-@mixin vp-1023 {
-  @media (max-width: $vp-tablet) {
+@mixin vp-mobile {
+  @media (min-width: $vp-mobile) and (max-width: $vp-tablet) {
     @content;
   }
 }
 
-@mixin vp-767 {
-  @media (max-width: $vp-mobile) {
+@mixin vp-tablet {
+  @media (min-width: $vp-tablet) and (max-width: $vp-lg) {
     @content;
+  }
+}
+
+@mixin vp-desktop {
+  @media (min-width: $vp-lg) and (max-width: $vp-desktop) {
+    @content;
+  }
+}
+
+// viewport > 1440px
+@mixin vp-desktop-wide {
+  @media (min-width: $vp-desktop) {
+    @content;
+  }
+}
+
+// самостоятельный выбор breakpoints
+@mixin responsive($breakpoint-one, $breakpoint-two: null) {
+  @if $breakpoint-two == null {
+    @media (max-width: $breakpoint-one) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $breakpoint-one) and (max-width: $breakpoint-two) {
+      @content;
+    }
   }
 }
