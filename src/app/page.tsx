@@ -2,10 +2,10 @@ import LoginPage from "@/components/LoginPage/LoginPage";
 
 export default function Home() {
   return (
-    <div>
-      <main>
+    <main>
+      <div className="container">
         <LoginPage />
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }

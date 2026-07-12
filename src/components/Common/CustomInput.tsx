@@ -1,25 +1,34 @@
-import { FC, useState } from "react"
-import { ChangeEventHandler } from "react"
+import { useState } from "react"
+import { ChangeEventHandler, FocusEventHandler } from "react"
 import { forwardRef } from "react"
+import { Icon } from "./Icon"
 
-export interface CustomInputProps {
-    inputType: 'email' | 'password' | 'text',
+interface CustomInputBaseProps {
+    inputType: 'email' | 'text',
     placeholder: string,
     id: string,
     required: boolean,
-    inputValue?: string
+    inputValue?: string,
     labelValue?: string,
     name?: string,
-    onBlur?: ChangeEventHandler<HTMLInputElement>,
+    onBlur?: FocusEventHandler<HTMLInputElement>,
     onChange?: ChangeEventHandler<HTMLInputElement>,
     errorMessage?: string,
     onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void,
-    disabled?: boolean,
 }
 
+interface CustomInputPasswordProps extends Omit<CustomInputBaseProps, 'inputType'> {
+    inputType: 'password',
+    showPassword: boolean,
+    onTogglePassword: () => void,
+}
+
+export type CustomInputProps = CustomInputBaseProps | CustomInputPasswordProps
+
 export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
-    ({ inputType, placeholder, id, required, labelValue, name, onChange, onBlur,
-        errorMessage, onKeyDown, disabled, inputValue }, ref) => {
+    (props, ref) => {
+        const { inputType, placeholder, id, required, labelValue, name, onChange, onBlur,
+            errorMessage, onKeyDown, inputValue } = props
         const [input, setInput] = useState('')
 
         const handleInput: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -27,17 +36,21 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
             onChange?.(event)
         }
 
-        /*
-        const handleClear = () => {
-            setInput('')
-        }
-            */
+        const isPassword = inputType === 'password'
+        const showPassword = isPassword ? props.showPassword : undefined
+        const onTogglePassword = isPassword ? props.onTogglePassword : undefined
+
+        const passwordInputType = showPassword ? 'text' : 'password'
 
         return (
-            <div className="custom-input">
+            <div className={id == 'password' ? "custom-input custom-input--password" :
+                "custom-input"
+            }>
                 <input
-                    className={id == 'query' ? "custom-input__field custom-input__field--query" : "custom-input__field"}
-                    type={inputType}
+                    className={id == 'query' ? "custom-input__field custom-input__field--query" :
+                        "custom-input__field"
+                    }
+                    type={inputType == 'password' ? passwordInputType : inputType}
                     id={id}
                     ref={ref}
                     placeholder={placeholder}
@@ -47,9 +60,16 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
                     name={name}
                     onBlur={onBlur}
                     onKeyDown={onKeyDown}
-                    disabled={disabled}
                 />
-                <label className="custom-input__label" htmlFor={id}>{labelValue}</label>
+                {labelValue && <label className="custom-input__label" htmlFor={id}>{labelValue}</label>}
+                {isPassword && <button
+                    className="custom-input__btn"
+                    onClick={onTogglePassword}
+                >  {showPassword ? <Icon role="eye-closed" className='custom-input__icon' /> :
+                    <Icon role="eye" className='custom-input__icon' />
+                    }
+                </button>
+                }
                 {errorMessage && <span className="custom-input__error">{errorMessage}</span>}
             </div>
         )

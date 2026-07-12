@@ -1,3 +1,4 @@
 .container {
-  margin: 0 16px;
+  @apply w-full max-w-none min-h-[100vh];
+  padding: 0 16px;
 }

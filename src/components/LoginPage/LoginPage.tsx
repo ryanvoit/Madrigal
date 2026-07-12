@@ -3,9 +3,9 @@ import FormLoginComponent from "./FormLoginComponent";
 export default function LoginPage() {
 
     return (
-        <div className="container">
-            <div className="login-page">
-                <h1 className="login-page__title" >Всем Привет!!! ЭТО МАДРИГАЛ!!!</h1>
+        <div className="login-page">
+            <div className="login-page__wrapper">
+                <h1 className="login-page__title" >Авторизация</h1>
                 <FormLoginComponent />
             </div>
         </div>

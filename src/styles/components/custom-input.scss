@@ -2,10 +2,38 @@
     @apply flex flex-col gap-[12px] relative w-full;
 
     &__field {
-        @apply w-[180px] border-gray-400 border-[2px] outline-none;
+        transition: border-color $transition;
+        border-color: $color-gray;
+        @apply w-full border-[1px] outline-none px-[13px] py-[16px] rounded-[10px];
 
         &:has(~ .custom-input__error) {
-            @apply border-red-500
+            @apply border-red-500;
+
+            &~.custom-input__btn .custom-input__icon {
+                color: red;
+            }
+
+            &:hover,
+            &:focus-visible {
+                @apply border-red-500;
+
+                &~.custom-input__btn .custom-input__icon {
+                    color: red;
+                }
+            }
+        }
+
+        &:hover,
+        &:focus-visible {
+            @apply border-black;
+
+            &~.custom-input__btn .custom-input__icon {
+                color: $color-black;
+            }
+        }
+
+        &::placeholder {
+            color: $color-dark-gray;
         }
 
         &--query {
@@ -23,13 +51,60 @@
                 box-shadow: 0 0 0 2px #7B68EE;
             }
         }
-    } 
+    }
 
     &__label {
         @apply absolute top-0 left-[200px] mb-0;
     }
 
     &__error {
-        @apply text-red-500
+        animation: appearance $transition-animation 1 forwards;
+        @apply text-red-500 absolute top-[-18px] text-[12px]/[15px] left-[3px]
+    }
+
+    &__btn {
+        transform: translateY(-50%);
+        @apply absolute right-[7px] top-[50%] z-20 cursor-pointer;
+
+        &:has(~ .custom-input__error) .custom-input__icon {
+            color: red;
+
+            &:hover,
+            &:focus-visible {
+                .custom-input__icon {
+                    transform: scale(1.2);
+                    color: red;
+                }
+            }
+        }
+
+        &:hover,
+        &:focus-visible {
+            .custom-input__icon {
+                transform: scale(1.2);
+                color: $color-black;
+            }
+        }
+    }
+
+    &__icon {
+        transition: color $transition, transform $transition;
+        color: $color-dark-gray;
+    }
+
+    &--password {
+        .custom-input__field {
+            padding: 16px 42px 16px 13px;
+        }
+    }
+}
+
+@keyframes appearance {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
