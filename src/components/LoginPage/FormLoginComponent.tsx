@@ -5,54 +5,72 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Login, LoginScheme } from "@/api/types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+interface ErrorMessage {
+    email?: string,
+    password?: string
+}
 
 export default function FormLoginComponent() {
     const router = useRouter()
-    const [error, setError] = useState<string | null>(null)
+    const [error, setError] = useState<ErrorMessage | null>(null)
+    const [showPassword, setShowPassword] = useState(false)
 
     const {
         register,
         handleSubmit,
-        formState: { errors }
+        formState: { errors, isSubmitting, isValid },
+        watch
     } = useForm<Login>({
-        resolver: zodResolver(LoginScheme)
+        resolver: zodResolver(LoginScheme),
+        mode: 'onChange'
     })
 
+    /**
+     * TODO: заменить на реальный запрос к API
+     */ 
     const handleClick = (data: Login) => {
         if (
-            data.email === 'mymail@yandex.ru' && 
+            data.email === 'madrigal@mail.ru' &&
             data.password === '1234567890'
         ) {
             setError(null)
             router.push('/landingpage')
         } else {
-            setError('Данные неверные! Проверьте их ещё раз!')
+            setError({
+                email: 'Неверный email',
+                password: 'Неверный пароль'
+            })
         }
     }
 
+    useEffect(() => {
+        const subscription = watch(() => setError(null))
+        return () => subscription.unsubscribe()
+    }, [watch])
+
     return (
-        <form className="login-page__form" noValidate={true} onSubmit={handleSubmit((data) => {handleClick(data)})}>
+        <form className="login-page__form" noValidate={true} onSubmit={handleSubmit(handleClick)}>
             <CustomInput
                 inputType="email"
-                placeholder="Email"
+                placeholder="Логин"
                 id='email'
                 required={true}
-                labelValue="Введите Ваш Email"
                 {...register("email")}
-                errorMessage={errors.email && errors.email.message}
+                errorMessage={errors.email?.message ?? error?.email}
             />
             <CustomInput
                 inputType="password"
                 placeholder="Пароль"
                 id='password'
                 required={true}
-                labelValue="Введите Ваш Пароль"
                 {...register("password")}
-                errorMessage={errors.password && errors.password.message}
+                showPassword={showPassword}
+                onTogglePassword={() => setShowPassword((prev) => !prev)}
+                errorMessage={errors.password?.message ?? error?.password}
             />
-            <button className="login-page__btn" type="submit">YEAH!</button>
-            {error && <span className="login-page__error">{error}</span>}
+            <button className="login-page__btn btn" type="submit" disabled={!isValid || isSubmitting}>Войти</button>
         </form>
     )
 }

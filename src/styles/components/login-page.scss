@@ -1,16 +1,20 @@
 .login-page {
-    @apply flex flex-col gap-[30px] pt-[30px];
+    @apply w-full h-full min-h-[100vh] flex justify-center items-center;
+
+    &__wrapper {
+        @apply flex flex-col gap-[64px] bg-white px-[20px] py-[40px] w-full rounded-[10px];
+    }
 
     &__title {
         @apply font-bold my-0 mx-[auto]
     }
 
     &__form {
-        @apply flex flex-col gap-[15px] px-[350px]
+        @apply flex flex-col gap-[34px];
     }
 
     &__btn {
-        @apply w-[200px] bg-amber-500
+        @apply w-[200px] bg-amber-500 mt-[53px]
     }
 
     &__error {
