@@ -3,7 +3,7 @@
     align-items: flex-start;
     gap: 12px;
     font-size: 14px;
-    color: $very-dark-gray-2;
+    color: $color-color-very-dark-gray-2;
 }
 
 .feedback__card-label {
@@ -22,7 +22,7 @@
 .feedback__card-checkbox-visual {
     width: 18px;
     height: 18px;
-    border: 2px solid $very-dark-gray;
+    border: 2px solid $color-very-dark-gray;
     border-radius: 2px;
     background-color: transparent;
     flex-shrink: 0;
@@ -41,8 +41,8 @@
 }
 
 .feedback__card-checkbox:checked+.feedback__card-checkbox-visual {
-    border-color: $very-dark-gray;
-    background-color: $light-gray;
+    border-color: $color-very-dark-gray;
+    background-color: $color-light-gray;
 
     &::after {
         display: block;
@@ -50,5 +50,5 @@
 }
 
 .feedback__card-checkbox-visual:hover {
-    border-color: darken($light-gray, 10%);
+    border-color: darken($color-light-gray, 10%);
 }

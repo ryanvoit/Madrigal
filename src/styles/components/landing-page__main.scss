@@ -22,7 +22,7 @@
         line-height: 24px;
         width: 339px;
         margin: 0 0 36px;
-        color: $very-dark-gray-2;
+        color: $color-color-very-dark-gray-2;
     }
 }
 
@@ -41,7 +41,7 @@
 
     &__card {
         border-radius: 20px;
-        background-color: $light-gray;
+        background-color: $color-light-gray;
         padding: 16px 12px;
 
         &-head {
@@ -56,7 +56,7 @@
             justify-content: center;
             width: 66px;
             height: 66px;
-            background-color: $mostly-black;
+            background-color: $color-mostly-black;
             border-radius: 50%;
             flex-shrink: 0;
         }
@@ -89,7 +89,7 @@
 
     &__item {
         display: flex;
-        background-color: $light-gray;
+        background-color: $color-light-gray;
         border-radius: 10px;
         align-items: center;
         justify-content: space-between;
@@ -126,7 +126,7 @@
         }
 
         &--active {
-            background-color: $very-light-gray;
+            background-color: $color-very-color-light-gray;
             margin-top: -15px;
             padding: 10px 13px 21px 13px;
             border-radius: 0 0 10px 10px;
@@ -175,7 +175,7 @@
     }
 
     &__card {
-        background-color: $light-gray;
+        background-color: $color-light-gray;
         border-radius: 10px;
 
         &-title {
@@ -189,7 +189,7 @@
         &-text {
             font-size: 14px;
             line-height: 20px;
-            color: $very-dark-gray-2;
+            color: $color-color-very-dark-gray-2;
         }
 
         &-form {
@@ -209,7 +209,7 @@
         &-agreement,
         &-link {
             font-size: 14px;
-            color: $very-dark-gray-2;
+            color: $color-color-very-dark-gray-2;
         }
 
         &-agreement {
