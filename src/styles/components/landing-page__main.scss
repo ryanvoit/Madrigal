@@ -102,12 +102,49 @@
             padding: 21px 0;
         }
 
-        &-symbol {
+        &-btn {
             display: inline-flex;
             flex-shrink: 0;
             cursor: pointer;
         }
     }
+
+    &__details {
+        display: none;
+
+        &-title {
+            font-weight: 700;
+            line-height: 24px;
+        }
+
+        &-symbol {
+            margin: 0 auto;
+        }
+
+        &-text {
+            line-height: 24px;
+        }
+
+        &--active {
+            background-color: $very-light-gray;
+            margin-top: -15px;
+            padding: 10px 13px 21px 13px;
+            border-radius: 0 0 10px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            display: flex;
+        }
+    }
+}
+
+.scenary__details-symbol {
+    transition: transform 0.3s ease;
+}
+
+.scenary__details-symbol--active {
+    transform: rotate(90deg);
+
 }
 
 .feedback {
