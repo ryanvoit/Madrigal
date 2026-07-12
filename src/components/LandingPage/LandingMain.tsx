@@ -1,5 +1,7 @@
 import { Icon } from '../Common/Icon';
 
+import LandingPageBtn from '../LandingPage/LandingPageComponents'
+
 export function LandingMain() {
     return (
         <div className="container">
@@ -68,17 +70,36 @@ export function LandingMain() {
                 {/* Item 1 */}
                 <div className="scenary__item">
                     <p className="scenary__item-text">Мониторинг KPI и госконтрактов</p>
-                    <Icon role="arrow" className="scenary__item-symbol" />
+                    <LandingPageBtn />
+                </div>
+                <div className="scenary__details">
+                    <h3 className='scenary__details-title'>Руководство видит срывы сроков слишком поздно.</h3>
+                    <Icon role="arrow-down-2" className="scenary__details-symbol" />
+                    <p className='scenary__details-text'>«Мадригал»: Платформа подсвечивает риски неисполнения
+                        бюджетов за 30 дней до дедлайна. ИИ анализирует темпы работы подрядчиков и сигнализирует
+                        об аномалиях.</p>
                 </div>
                 {/* Item 2 */}
                 <div className="scenary__item">
                     <p className="scenary__item-text">Оптимизация корпоративных расходов</p>
-                    <Icon role="arrow" className="scenary__item-symbol" />
+                    <LandingPageBtn />
+                </div>
+                <div className="scenary__details">
+                    <h3 className='scenary__details-title'>Финансовый отдел тратит недели на поиск утечек бюджета.</h3>
+                    <Icon role="arrow-down-2" className="scenary__details-symbol" />
+                    <p className='scenary__details-text'>«Мадригал»: ИИ автоматически сканирует транзакции,
+                        моментально обнаруживает дублирующиеся платежи, скрытые комиссии и подозрительные цепочки контрагентов.</p>
                 </div>
                 {/* Item 3 */}
                 <div className="scenary__item">
                     <p className="scenary__item-text">Автоматическая генерация отчетности</p>
-                    <Icon role="arrow" className="scenary__item-symbol" />
+                    <LandingPageBtn />
+                </div>
+                <div className="scenary__details">
+                    <h3 className='scenary__details-title'>Аналитики тонут в рутине, собирая презентации вручную.</h3>
+                    <Icon role="arrow-down-2" className="scenary__details-symbol" />
+                    <p className='scenary__details-text'>«Мадригал»: Интеллектуальный ассистент сам формулирует
+                        текстовые выводы по графикам и выгружает готовые аналитические записки по ГОСТу в один клик.</p>
                 </div>
             </section>
 

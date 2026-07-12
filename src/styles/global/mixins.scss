@@ -25,11 +25,13 @@
 
 // самостоятельный выбор breakpoints
 @mixin responsive($breakpoint-one, $breakpoint-two: null) {
-  @if $breakpoint-two == null {
+  @if $breakpoint-two ==null {
     @media (max-width: $breakpoint-one) {
       @content;
     }
-  } @else {
+  }
+
+  @else {
     @media (min-width: $breakpoint-one) and (max-width: $breakpoint-two) {
       @content;
     }
