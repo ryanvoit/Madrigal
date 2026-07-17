@@ -165,11 +165,11 @@
         .custom-input__field {
             @apply relative w-[11px] h-[11px] opacity-0 cursor-pointer top-0;
 
-            &:checked +.custom-input__indicator::before {
+            &:checked+.custom-input__indicator::before {
                 @apply opacity-100
             }
 
-            &:checked + .custom-input__indicator .custom-input__tick-icon {
+            &:checked+.custom-input__indicator .custom-input__tick-icon {
                 @apply opacity-100
             }
         }
@@ -195,13 +195,12 @@
         .custom-input__error {
             top: calc(100%);
             @apply left-[3px] mt-[6px]
-
         }
 
         .custom-input__tick-icon {
             transition: opacity $transition;
             transform: translate(-50%, -50%);
-            @apply absolute top-[50%] left-[50%] pointer-events-none opacity-0 text-white 
+            @apply absolute top-[50%] left-[50%] pointer-events-none opacity-0 text-white
         }
     }
 }
