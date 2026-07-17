@@ -7,6 +7,14 @@
         font-family: $ff-monserat;
         @apply w-full border-[1px] outline-none px-[13px] py-[16px] rounded-[10px] text-white;
 
+        &:has(~ .custom-input__btn:hover, ~ .custom-input__error) {
+            border-color: $color-error
+        }
+        
+        &:has(~ .custom-input__btn:hover) {
+            border-color: $color-gray-light
+        }
+
         &:has(~ .custom-input__error) {
             @apply border-error;
 
@@ -44,10 +52,6 @@
 
         &::placeholder {
             color: $color-dark-gray;
-        }
-
-        &:has(~ .custom-input__btn:hover) {
-            border-color: $color-gray-light
         }
 
         &:-webkit-autofill,
@@ -142,6 +146,17 @@
             &::placeholder {
                 color: $color-very-dark-gray--2
             }
+
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active {
+                -webkit-box-shadow: 0 0 0 1000px $color-light-gray inset;
+                -webkit-text-fill-color: $color-black;
+                caret-color: $color-black;
+                font-family: $ff-monserat;
+                background-color: $color-light-gray;
+            }
         }
 
         &:has(.custom-input__error) {
@@ -165,11 +180,11 @@
         .custom-input__field {
             @apply relative w-[11px] h-[11px] opacity-0 cursor-pointer top-0;
 
-            &:checked +.custom-input__indicator::before {
+            &:checked+.custom-input__indicator::before {
                 @apply opacity-100
             }
 
-            &:checked + .custom-input__indicator .custom-input__tick-icon {
+            &:checked+.custom-input__indicator .custom-input__tick-icon {
                 @apply opacity-100
             }
         }
@@ -195,13 +210,12 @@
         .custom-input__error {
             top: calc(100%);
             @apply left-[3px] mt-[6px]
-
         }
 
         .custom-input__tick-icon {
             transition: opacity $transition;
             transform: translate(-50%, -50%);
-            @apply absolute top-[50%] left-[50%] pointer-events-none opacity-0 text-white 
+            @apply absolute top-[50%] left-[50%] pointer-events-none opacity-0 text-white
         }
     }
 }

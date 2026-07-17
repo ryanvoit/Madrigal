@@ -67,7 +67,9 @@ export default function FormLoginComponent() {
                 required={true}
                 {...register("password")}
                 showPassword={showPassword}
-                onTogglePassword={() => setShowPassword((prev) => !prev)}
+                onTogglePassword={() => {
+                    setShowPassword((prev) => !prev)
+                }}
                 errorMessage={errors.password?.message ?? error?.password}
             />
             <button className="login-page__btn btn" type="submit" disabled={!isValid || isSubmitting}>Войти</button>
