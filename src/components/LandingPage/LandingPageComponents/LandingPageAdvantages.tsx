@@ -1,4 +1,4 @@
-import LandingPageAdvantagesItem from '../LandingPageAdvantagesItem'
+import LandingPageAdvantagesItem from './LandingPageAdvantagesItem'
 
 export default function LandingPageAdvantages() {
     const advantagesContent = [

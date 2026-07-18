@@ -1,0 +1,31 @@
+$transition: cubic-bezier(0.4, 0, 0.2, 1);
+
+.scenary {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 40px;
+        color: $color-white;
+        font-family: $ff-tektur;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0;
+        width: 100%;
+        cursor: pointer;
+    }
+}

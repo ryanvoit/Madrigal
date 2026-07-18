@@ -1,6 +1,6 @@
 'use client';
 
-import { Icon } from '../Common/Icon';
+import { Icon } from '../../Common/Icon';
 
 interface LandingPageArrowBtnProps {
   isOpen: boolean;
@@ -15,7 +15,7 @@ export default function LandingPageArrowBtn({
     <button
       type="button"
       onClick={onToggle}
-      className="scenary__item-btn"
+      className="scenary-card__btn"
       aria-label={isOpen ? 'Свернуть детали' : 'Развернуть детали'}
       style={{
         cursor: 'pointer',
@@ -27,8 +27,7 @@ export default function LandingPageArrowBtn({
     >
       <Icon
         role="arrow"
-        className={`scenary__details-symbol ${isOpen ? 'scenary__details-symbol--active' : ''
-          }`}
+        className={`scenary-card__icon ${isOpen ? 'scenary-card__icon--active' : ''}`}
         aria-hidden="true"
       />
     </button>

@@ -1,4 +1,4 @@
-import LandingPageScenaryItem from "../LandingPageScenaryItem"
+import LandingPageScenaryItem from "./LandingPageScenaryItem"
 
 export function LandingPageScenary() {
     const landingScenaryContent = [

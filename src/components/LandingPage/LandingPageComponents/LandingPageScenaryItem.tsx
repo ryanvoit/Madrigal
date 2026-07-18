@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import LandingPageArrowBtn from './LandingPageArrowBtn';
-import { Icon } from '../Common/Icon';
+import { Icon } from '../../Common/Icon';
 
 interface LandingPageScenaryItemProps {
     summary: string;
@@ -18,6 +18,7 @@ export default function LandingPageScenaryItem({
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen((prev) => !prev);
+
     const handleArrowClick = (e: React.MouseEvent) => {
         e.stopPropagation();
         toggle();
@@ -25,7 +26,7 @@ export default function LandingPageScenaryItem({
 
     return (
         <div
-            className={`scenary__item-wrapper ${isOpen ? 'scenary__item-wrapper--active' : ''}`}
+            className={`scenary-card ${isOpen ? 'scenary-card--active' : ''}`}
             onClick={toggle}
             role="button"
             aria-expanded={isOpen}
@@ -39,22 +40,21 @@ export default function LandingPageScenaryItem({
             }}
             style={{ cursor: 'pointer' }}
         >
-            <div className="scenary__item">
-                <div className="scenary__item-head">
-
-
-                    <p className="scenary__item-text">{summary}</p>
-
+            <div className="scenary-card__wrapper">
+                <p className="scenary-card__text">{summary}</p>
+                <div className="scenary-card__decorative-btn">
                     <LandingPageArrowBtn
                         isOpen={isOpen}
                         onToggle={() => handleArrowClick}
                     />
                 </div>
             </div>
-            <div id="scenary-details" className="scenary__details">
-                <h3 className="scenary__details-title">{title}</h3>
-                <Icon className='scenary__details-icon' role='arrow-down-2' />
-                <p className="scenary__details-text">{text}</p>
+            <div id="scenary-details" className="scenary-card__details">
+                <div className="scenary-card__inner">
+                    <h3 className="scenary-card__title">{title}</h3>
+                    <Icon className='scenary-card__icon' role='arrow-down-2' />
+                    <p className="scenary-card__text-details">{text}</p>
+                </div>
             </div>
         </div>
     );

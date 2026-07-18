@@ -22,7 +22,11 @@
 
         &-wrapper {
             position: relative;
+            border: 2px solid $color-red;
+            border-radius: 20px;
+            padding: 10px;
 
+            /*
             &::before,
             &::after {
                 content: "";
@@ -49,6 +53,7 @@
                 border-width: 4px 4px 0 0;
                 border-radius: 0 8px 0 0;
             }
+                */
         }
 
 
