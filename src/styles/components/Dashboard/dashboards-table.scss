@@ -1,0 +1,90 @@
+.table {
+    position: relative;
+    margin-bottom: 130px;
+
+    &__panel {
+        background-color: $color-gray-light;
+        box-shadow: 0px 2px 4px 0px #0000001C;
+        border-radius: 10px;
+        padding: 14px 76px;
+
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        color: $color-red;
+        margin-bottom: 29px;
+    }
+
+    &__close-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    &__panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    &__settings {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 151px;
+        align-items: baseline;
+        margin-bottom: 29px;
+    }
+
+    &__row {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+    }
+
+    &__label {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &__input {
+        border: 1px solid $color-black;
+        border-radius: 5px;
+        width: 78px;
+        height: 31px;
+        text-align: center;
+    }
+
+    &__action-btn {
+        background-color: $color-gray-dark;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 130%;
+        color: $color-white;
+        padding: 5px 49px;
+        cursor: pointer;
+    }
+
+    &__templates {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &-title {
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            text-align: center;
+            color: $color-white;
+            margin-bottom: 10px;
+        }
+    }
+}

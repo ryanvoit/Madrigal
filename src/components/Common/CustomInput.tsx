@@ -45,11 +45,11 @@ export const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
         const passwordInputType = showPassword ? 'text' : 'password'
 
         return (
-            <div className={id == 'password' ? "custom-input custom-input--password" : contrast ? "custom-input custom-input--contrast" : 
+            <div className={id == 'password' ? "custom-input custom-input--password" : contrast ? "custom-input custom-input--contrast" :
                 "custom-input"
             }>
                 <input
-                    className={ id == 'query' ? "custom-input__field custom-input__field--query" : "custom-input__field"}
+                    className={id == 'query' ? "custom-input__field custom-input__field--query" : "custom-input__field"}
                     type={inputType == 'password' ? passwordInputType : inputType}
                     id={id}
                     ref={ref}
