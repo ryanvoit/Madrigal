@@ -1,6 +1,23 @@
-// In process...
+button,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font-family: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: $ff-monserat;
+}
 
 .welcome {
+// Create Section Table
+    // display: none;
+
 
     &__faq {
         &-btn {
@@ -18,13 +35,13 @@
         line-height: 40px;
         color: $color-white;
         margin: 0 0 107px;
+        text-align: center;
     }
 
 
     &__action-btn {
         margin-bottom: 17px;
     }
-
 
     &__question {
         font-family: $ff-tektur;
@@ -55,7 +72,6 @@
     }
 
     &__actions {
-
         &-group {
             display: flex;
             flex-direction: column;
@@ -75,5 +91,20 @@
         border-radius: 50%;
         width: 32px;
         height: 32px;
+    }
+
+    &__search {
+        &-btn {
+            position: relative;
+        }
+
+        &-icon,
+        &-icon--send {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10px;
+            cursor: pointer;
+        }
     }
 }
